@@ -9,8 +9,8 @@ Pull the latest changes
 Run the application locally
 
 - Move to sub folder `cd ./simple-webapp-mysql`
-- Build the application in docker `docker build -t .`
-- Run docker image in local `docker run —name simple-webapp -p 8080:81 -e IMAGE_URL=/img USER_NAME=dipen`
+- Build the application in docker `docker build -t webapp-mysql .`
+- Run docker image in local `docker run -it --env IMAGE_URL=/img --env USER_NAME=dipen -p 8080:81 webapp-mysql`
 
 Push the image to ECR
 
