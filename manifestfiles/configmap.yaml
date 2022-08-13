@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: project-config
+data:
+  IMAGE_URL: "yours3BucketUrl"
+  USER_NAME: "yourUserName" 
