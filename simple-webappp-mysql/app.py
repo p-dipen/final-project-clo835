@@ -3,8 +3,8 @@ from flask import render_template
 import socket
 import mysql.connector
 import os
-import boto3
-s3 = boto3.client('s3')
+from cloudpathlib import CloudPath
+
 
 app = Flask(__name__)
 
@@ -21,6 +21,7 @@ def main():
     db_connect_result = False
     err_message = ""
     downloadFile()
+    app.logger.info("called")
     try:
         mysql.connector.connect(
             host=DB_Host, database=DB_Database, user=DB_User, password=DB_Password)
@@ -35,11 +36,14 @@ def main():
 
 def downloadFile():
     try:
+        app.logger.info('funcationed called')
         if IMAGE_URL != 'static':
-            s3.download_file(IMAGE_URL, './static/')
+            cp = CloudPath(IMAGE_URL)
+            cp.download_to('./static/')
+            # s3.download_file(IMAGE_URL, './static/')
     except Exception as e:
         err_message = str(e)
-        print(err_message)
+        app.logger.error(err_message)
 
 
 @app.route("/debug")

@@ -11,14 +11,14 @@
 >
   <h1>{{ user_name }}</h1>
   {% if db_connect_result %}
-  <img src="{{ url_for('static', filename='img/success.jpg') }}" />
+  <img src="{{ url_for('static', filename='success.jpg') }}" />
   <h3>Successfully connected to the MySQL database.</h3>
   {% else %}
-  <img src="{{ url_for('static', filename='img/failed.png') }}" />
-  <h3>S3 Bucket Url</h3>
-  {{image_url}}
+  <img src="{{ url_for('static', filename='failed.png') }}" />
   <h3>Failed connecting to the MySQL database.</h3>
-  {% endif %} {% if debug %}
+  {% endif %}
+  <h3>S3 Bucket Url</h3>
+  {{image_url}} {% if debug %}
   <h2>{{ debug }}</h2>
   {% endif %} {% if name %}
   <p>From {{ name }}!</p>
