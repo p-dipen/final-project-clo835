@@ -1,12 +1,16 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: webapp-service
-  namespace: final
+  labels:
+    app.kubernetes.io/name: webapp-service
+    app.kubernetes.io/component: frontend
 spec:
-  selector:
-    name: simple-webapp-mysql
-  type: LoadBalancer
+  type: NodePort
   ports:
   - port: 8080
     targetPort: 81
+    nodePort: 30100
+  selector:
+    app.kubernetes.io/name: guestbook
+    app.kubernetes.io/component: frontend
