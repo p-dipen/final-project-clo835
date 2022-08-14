@@ -21,7 +21,6 @@ def main():
     db_connect_result = False
     err_message = ""
     downloadFile()
-    app.logger.info("called")
     try:
         mysql.connector.connect(
             host=DB_Host, database=DB_Database, user=DB_User, password=DB_Password)
@@ -36,14 +35,13 @@ def main():
 
 def downloadFile():
     try:
-        app.logger.info('funcationed called')
         if IMAGE_URL != 'static':
             cp = CloudPath(IMAGE_URL)
             cp.download_to('./static/')
             # s3.download_file(IMAGE_URL, './static/')
     except Exception as e:
         err_message = str(e)
-        app.logger.error(err_message)
+        print(err_message)
 
 
 @app.route("/debug")
