@@ -18,10 +18,9 @@ USER_NAME = os.environ.get('USER_NAME') or ""
 
 @app.route("/")
 def main():
-    if IMAGE_URL != 'static':
-        s3.download_file(IMAGE_URL, './static/')
     db_connect_result = False
     err_message = ""
+    downloadFile()
     try:
         mysql.connector.connect(
             host=DB_Host, database=DB_Database, user=DB_User, password=DB_Password)
@@ -32,6 +31,15 @@ def main():
         err_message = str(e)
 
     return render_template('hello.html', debug="Environment Variables: DB_Host=" + (os.environ.get('MYSQL_SERVICE_HOST') or "Not Set") + "; DB_Database=" + (os.environ.get('DB_Database') or "Not Set") + "; DB_User=" + (os.environ.get('DB_User') or "Not Set") + "; DB_Password=" + (os.environ.get('DB_Password') or "Not Set") + "; " + err_message, db_connect_result=db_connect_result, name=socket.gethostname(), color=color, image_url=IMAGE_URL, user_name=USER_NAME)
+
+
+def downloadFile():
+    try:
+        if IMAGE_URL != 'static':
+            s3.download_file(IMAGE_URL, './static/')
+    except Exception as e:
+        err_message = str(e)
+        print(err_message)
 
 
 @app.route("/debug")
