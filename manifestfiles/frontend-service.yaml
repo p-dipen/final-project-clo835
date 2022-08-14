@@ -6,7 +6,7 @@ spec:
   selector:
     app: example-app
     name: simple-webapp-mysql
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 81
     targetPort: 8080

@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: project-config
 data:
-  IMAGE_URL: "yours3BucketUrl"
-  USER_NAME: "yourUserName" 
+  IMAGE_URL: "s3://final-project-dp/img/"
+  USER_NAME: "Group-DIPEN-RAJ-LAKSHAY-GIRA" 
