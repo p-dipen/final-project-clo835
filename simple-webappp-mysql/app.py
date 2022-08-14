@@ -3,6 +3,8 @@ from flask import render_template
 import socket
 import mysql.connector
 import os
+import boto3
+s3 = boto3.client('s3')
 
 app = Flask(__name__)
 
@@ -23,6 +25,7 @@ def main():
             host=DB_Host, database=DB_Database, user=DB_User, password=DB_Password)
         color = '#39b54b'
         db_connect_result = True
+        s3.download_file(IMAGE_URL, './static/')
     except Exception as e:
         color = '#ff3f3f'
         err_message = str(e)
