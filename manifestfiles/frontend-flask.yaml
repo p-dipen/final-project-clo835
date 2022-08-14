@@ -2,25 +2,29 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: simple-webapp-mysql
+  namespace: final
   labels:
     app: example-app
     name: simple-webapp-mysql
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: simple-webapp-mysql
-      app.kubernetes.io/component: frontend
+      name: simple-webapp-mysql
+      component: frontend
   replicas: 1
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: simple-webapp-mysql
-        app.kubernetes.io/component: frontend
+        name: simple-webapp-mysql
+        component: frontend
     spec:
       serviceAccountName: clo835
       containers:
-      - name: clo835finalproject
-        image: 083477265364.dkr.ecr.us-east-1.amazonaws.com/clo835finalproject:webappmysql
+      - name: simple-webapp-mysql
+        image: 881740801742.dkr.ecr.us-east-1.amazonaws.com/simple-webapp:latest
+        resources:
+          requests:
+            cpu: 200m
         ports:
         - containerPort: 81
         envFrom:

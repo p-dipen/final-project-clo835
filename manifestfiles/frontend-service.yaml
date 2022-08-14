@@ -2,11 +2,11 @@ kind: Service
 apiVersion: v1
 metadata:
   name: webapp-service
+  namespace: final
 spec:
   selector:
-    app: example-app
     name: simple-webapp-mysql
-  type: NodePort
+  type: LoadBalancer
   ports:
-  - port: 81
-    targetPort: 8080
+  - port: 8080
+    targetPort: 81
