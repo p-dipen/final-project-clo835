@@ -25,7 +25,8 @@ def main():
             host=DB_Host, database=DB_Database, user=DB_User, password=DB_Password)
         color = '#39b54b'
         db_connect_result = True
-        s3.download_file(IMAGE_URL, './static/')
+        if IMAGE_URL != 'static':
+            s3.download_file(IMAGE_URL, './static/')
     except Exception as e:
         color = '#ff3f3f'
         err_message = str(e)
