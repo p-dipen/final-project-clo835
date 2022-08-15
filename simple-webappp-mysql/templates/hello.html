@@ -9,7 +9,7 @@
     vertical-align: middle;
   "
 >
-  <h1>{{ user_name }}</h1>
+  <h1>Group naming : {{ user_name }}</h1>
   {% if db_connect_result %}
   <img src="{{ url_for('static', filename='success.jpg') }}" />
   <h3>Successfully connected to the MySQL database.</h3>
