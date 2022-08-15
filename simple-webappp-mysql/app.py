@@ -1,9 +1,11 @@
+from cloudpathlib import CloudPath
+import os
+import mysql.connector
+import socket
 from flask import Flask
 from flask import render_template
-import socket
-import mysql.connector
-import os
-from cloudpathlib import CloudPath
+import logging
+logging.basicConfig(filename='record.log', level=logging.DEBUG)
 
 
 app = Flask(__name__)
@@ -15,14 +17,17 @@ DB_Password = os.environ.get('DB_Password') or "paswrd"
 IMAGE_URL = os.environ.get('IMAGE_URL') or "static"
 USER_NAME = os.environ.get('USER_NAME') or ""
 
+
 def downloadFile():
     try:
+        app.logger.info(IMAGE_URL)
         if IMAGE_URL != 'static':
             cp = CloudPath(IMAGE_URL)
             cp.download_to('./static')
             # s3.download_file(IMAGE_URL, './static/')
     except Exception as e:
         err_message = str(e)
+        app.logger.warning(err_message)
         print(err_message)
 
 downloadFile()
@@ -31,6 +36,7 @@ downloadFile()
 def main():
     db_connect_result = False
     err_message = ""
+    app.logger.info("caling download")
     try:
         mysql.connector.connect(
             host=DB_Host, database=DB_Database, user=DB_User, password=DB_Password)

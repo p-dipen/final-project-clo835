@@ -6,6 +6,11 @@ metadata:
   labels:
     app: example-app
     name: simple-webapp-mysql
+  annotations:
+    # Container Image Automated Updates
+    flux.weave.works/automated: "true"
+    # do not apply this manifest on the cluster
+    #flux.weave.works/ignore: "true"
 spec:
   selector:
     matchLabels:
@@ -21,7 +26,7 @@ spec:
       serviceAccountName: clo835
       containers:
       - name: simple-webapp-mysql
-        image: 881740801742.dkr.ecr.us-east-1.amazonaws.com/simple-webapp:latest
+        image: 083477265364.dkr.ecr.us-east-1.amazonaws.com/simple-webapp:latest
         resources:
           requests:
             cpu: 200m
