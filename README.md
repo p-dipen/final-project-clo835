@@ -1,6 +1,7 @@
 
 # Welcome to CLO835 Project!
 
+
 ## Create docker image and pushing the image in ECR
 
 Pull the latest changes
@@ -19,6 +20,13 @@ Push the image to ECR
 - Tag docker image `docker tag simple-web-mysql:latest {ACCOUNTID}.dkr.ecr.{REGION}.amazonaws.com/simple-web-mysql:latest`
 - Push the docker Image `docker push {ACCOUNTID}.dkr.ecr.{REGION}.amazonaws.com/simple-web-mysql:latest`
 
+## Pre-request FluxCD to work 
+
+    aws iam create-policy \
+    --policy-name awss3roleaccessbucket \
+    --policy-document file://iam-policy.json   
+
+    eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=clo835 --approve
 
 ## Step by Step command to create infrastructure 
 
@@ -44,4 +52,3 @@ Push the image to ECR
       while true; do wget -q -O - http://simple-webapp-mysql; done
       k get hpa -w -n final
       k get pods -n final
-
