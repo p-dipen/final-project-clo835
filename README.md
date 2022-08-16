@@ -44,3 +44,4 @@ Push the image to ECR
       while true; do wget -q -O - http://simple-webapp-mysql; done
       k get hpa -w -n final
       k get pods -n final
+
