@@ -16,7 +16,7 @@ DB_User = os.environ.get('DB_User') or "root"
 DB_Password = os.environ.get('DB_Password') or "paswrd"
 IMAGE_URL = os.environ.get('IMAGE_URL') or "static"
 USER_NAME = os.environ.get('USER_NAME') or ""
-
+print(IMAGE_URL)
 
 def downloadFile():
     try:
