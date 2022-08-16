@@ -26,7 +26,7 @@ spec:
       serviceAccountName: clo835
       containers:
       - name: simple-webapp-mysql
-        image: 083477265364.dkr.ecr.us-east-1.amazonaws.com/simple-webapp:latest
+        image: 881740801742.dkr.ecr.us-east-1.amazonaws.com/simple-webapp:latest
         resources:
           requests:
             cpu: 200m
