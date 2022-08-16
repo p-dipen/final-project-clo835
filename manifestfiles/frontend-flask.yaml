@@ -9,7 +9,7 @@ metadata:
   annotations:
     # Container Image Automated Updates
     flux.weave.works/automated: "true"
-    flux.weave.works/tag.simple-webapp-mysql: glob:*
+    flux.weave.works/tag.simple-webapp-mysql: glob:latest
     # do not apply this manifest on the cluster
     #flux.weave.works/ignore: "true"
 spec:
