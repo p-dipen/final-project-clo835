@@ -4,5 +4,5 @@ metadata:
   name: project-config
   namespace: final
 data:
-  IMAGE_URL: "s3://final-project-12/img/"
+  IMAGE_URL: "s3://final-project-12/simple/"
   USER_NAME: "Group-DIPEN-RAJ-LAKSHAY-GIRA" 
