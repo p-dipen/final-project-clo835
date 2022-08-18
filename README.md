@@ -1,6 +1,7 @@
 
 # Welcome to CLO835 Project!
 
+![image](https://user-images.githubusercontent.com/30650964/185367221-dadf9084-e187-472a-981d-b0a06e08d7df.png)
 
 ## Create docker image and pushing the image in ECR
 
